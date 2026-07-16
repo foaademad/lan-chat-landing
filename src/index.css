@@ -1,0 +1,100 @@
+:root {
+  --bg: #000000;
+  --bg-top: #23262b;
+  --bg-bottom: #000000;
+  --navy: #0b0e1b;
+  --text: #ecedee;
+  --muted: #9ba1a6;
+  --brand: #c9960f;
+  --brand-bright: #ffd56a;
+  --brand-soft: #ffe08a;
+  --on-brand: #0b141a;
+  --border: rgba(201, 150, 15, 0.18);
+  --surface: rgba(11, 14, 27, 0.72);
+  --font-ar: "Tajawal", system-ui, sans-serif;
+  --font-en: "Sora", system-ui, sans-serif;
+  --font-brand: "Great Vibes", cursive;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-en);
+  -webkit-font-smoothing: antialiased;
+}
+
+body[data-lang="ar"] {
+  font-family: var(--font-ar);
+}
+
+button,
+a {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: rgba(201, 150, 15, 0.35);
+  color: #fff;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
