@@ -57,7 +57,7 @@ export const copy = {
     modalBody: "هذا المتجر لا يزال تحت التطوير. سنعلن عن رابط التحميل الرسمي فور توفره.",
     modalOk: "حسنًا",
     footerCopy: "جميع الحقوق محفوظة © Lan SMS Trading",
-    support: "support@lanchat.app",
+    support: "Support@lanchat.net",
   },
   en: {
     langSwitch: "العربية",
@@ -115,6 +115,6 @@ export const copy = {
     modalBody: "This store listing is still under development. We’ll publish the official download link as soon as it’s ready.",
     modalOk: "Got it",
     footerCopy: "All rights reserved © Lan SMS Trading",
-    support: "support@lanchat.app",
+    support: "Support@lanchat.net",
   },
 } as const;
