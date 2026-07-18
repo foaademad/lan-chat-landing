@@ -80,11 +80,12 @@ function App() {
 
       <div className="content">
         <header className="shell topbar">
-          <a className="brand-lockup" href="#top" aria-label="Lan Chat">
-            <span className="brand-crest">
-              <img src="/brand/logo.png" alt="" />
-            </span>
-            <span className="brand-script">LanChat</span>
+          <a className="brand-lockup" href="#top" aria-label="LanChat">
+            <img
+              className="brand-wordmark"
+              src="/brand/wordmark.png"
+              alt="LanChat"
+            />
           </a>
           <button
             type="button"
@@ -97,8 +98,13 @@ function App() {
 
         <main id="top">
           <section className="shell hero">
-            <img className="hero__mark" src="/brand/logo.png" alt="Lan Chat logo" />
-            <h1 className="hero__brand">Lan Chat</h1>
+            <h1 className="hero__brand">
+              <img
+                className="hero__wordmark"
+                src="/brand/wordmark.png"
+                alt="LanChat"
+              />
+            </h1>
             <p className="hero__headline">{t.headline}</p>
             <p className="hero__lead">{t.lead}</p>
             <StoreButtons
@@ -166,7 +172,13 @@ function App() {
         </main>
 
         <footer className="shell footer">
-          <p className="footer__brand">Lan Chat</p>
+          <p className="footer__brand">
+            <img
+              className="footer__wordmark"
+              src="/brand/wordmark.png"
+              alt="LanChat"
+            />
+          </p>
           <p className="footer__copy">{t.footerCopy}</p>
           <p className="footer__copy">
             <a href={`mailto:${t.support}`} style={{ color: "inherit" }}>
