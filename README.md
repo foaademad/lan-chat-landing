@@ -11,13 +11,23 @@ npm install
 npm run dev
 ```
 
-## البناء للرفع
+## البناء
 
 ```bash
 npm run build
 ```
 
 المخرجات في مجلد `dist/`.
+
+## Coolify (VPS)
+
+المشروع بدون Docker. في Coolify اختر **Nixpacks** (أو اترك الاكتشاف التلقائي) مع:
+
+- Base directory: `lanchat(payment)` إذا كان الريبو هو `LANCHATFOLDER`، أو جذر المشروع إذا كان ريبو اللاندنج وحده
+- Build: من `nixpacks.toml` (`npm ci` ثم `npm run build`)
+- Start: `serve` على مجلد `dist`
+
+بعد أي تعديل: **Redeploy** من لوحة Coolify (وليس من الماك).
 
 ## ملاحظات
 
