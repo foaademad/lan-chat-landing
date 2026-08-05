@@ -17,17 +17,22 @@ npm run dev
 npm run build
 ```
 
-المخرجات في مجلد `dist/`.
+المخرجات في مجلد `dist/` — **محلية فقط** وغير مرفوعة على Git.
+لا تعتمد على نسخ/رفع `dist` يدويًا للسيرفر.
 
 ## Coolify (VPS)
 
-المشروع بدون Docker. في Coolify اختر **Nixpacks** (أو اترك الاكتشاف التلقائي) مع:
+المشروع بدون Docker. في Coolify اختر **Nixpacks** مع:
 
-- Base directory: `lanchat(payment)` إذا كان الريبو هو `LANCHATFOLDER`، أو جذر المشروع إذا كان ريبو اللاندنج وحده
-- Build: من `nixpacks.toml` (`npm ci` ثم `npm run build`)
-- Start: `serve` على مجلد `dist`
+- Base directory: `lanchat(payment)` إذا كان الريبو `LANCHATFOLDER`، أو جذر المشروع إذا كان ريبو اللاندنج وحده
+- Build Pack: **Nixpacks** (ليس Dockerfile، وليس Static فقط بدون build)
+- Coolify يشغّل `npm ci` ثم `npm run build` ثم يخدم `dist`
 
-بعد أي تعديل: **Redeploy** من لوحة Coolify (وليس من الماك).
+بعد تعديل الكود في `src/`:
+1. `git push`
+2. من Coolify: **Redeploy** (يفضّل بدون cache إن ظهر الخيار)
+
+مسح `dist` محليًا ثم `npm run build` لا يحدّث السيرفر وحده — التحديث يأتي من push + redeploy.
 
 ## ملاحظات
 

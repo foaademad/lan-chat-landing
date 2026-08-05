@@ -9,7 +9,9 @@ lerna-debug.log*
 
 node_modules
 
-dist-ssr
+# Build output — always produced by `npm run build` (local or Coolify/Nixpacks)
+dist
+
 *.local
 
 # Editor directories and files
