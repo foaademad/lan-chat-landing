@@ -1,120 +1,370 @@
 export type Lang = "ar" | "en";
 
-export const copy = {
+export type FeatureChapter = {
+  id: string;
+  index: string;
+  /** Short label on the orbit dial */
+  short: string;
+  title: string;
+  desc: string;
+  points: readonly string[];
+};
+
+export type Copy = {
+  langSwitch: string;
+  navFeatures: string;
+  navPrivacy: string;
+  navDownload: string;
+  brand: string;
+  headline: string;
+  lead: string;
+  ctaPrimary: string;
+  ctaWeb: string;
+  marquee: readonly string[];
+  promiseLabel: string;
+  promiseTitle: string;
+  promiseText: string;
+  featuresLabel: string;
+  featuresTitle: string;
+  featuresLead: string;
+  featuresHint: string;
+  featuresPrev: string;
+  featuresNext: string;
+  chapters: readonly FeatureChapter[];
+  extrasLabel: string;
+  extrasTitle: string;
+  extras: readonly string[];
+  webLabel: string;
+  webTitle: string;
+  webText: string;
+  webCta: string;
+  privacyLabel: string;
+  privacyTitle: string;
+  privacyText: string;
+  privacyItems: readonly string[];
+  downloadTitle: string;
+  downloadText: string;
+  getOn: string;
+  appStore: string;
+  googlePlay: string;
+  footerTagline: string;
+  footerExplore: string;
+  footerContact: string;
+  footerCopy: string;
+  support: string;
+};
+
+export const STORE_URLS = {
+  ios: "https://apps.apple.com/us/app/lan-chat/id6787370929",
+  android: "https://play.google.com/store/apps/details?id=com.nasser.lanchat",
+  web: "https://web.lanchat.net",
+} as const;
+
+export const copy: Record<Lang, Copy> = {
   ar: {
     langSwitch: "English",
-    headline: "تجربة تواصل أرقى… مصمّمة لتفوق التوقعات",
-    lead: "Lan Chat ليس مجرد تطبيق محادثات عادي — إنه منصة تواصل متكاملة تجمع السرعة، الأناقة، والأمان في واجهة ذهبية فاخرة تفوق تطبيقات الدردشة التقليدية.",
-    aboutLabel: "من نحن",
-    aboutTitle: "لماذا Lan Chat أفضل؟",
-    aboutP1:
-      "Lan Chat صُمّم من الأساس ليقدّم تجربة تواصل أذكى وأسلس. بدل التشتت بين تطبيقات متعددة، تحصل على محادثات فورية، مكالمات صوت وصورة، حالات، وغرف بث مباشر — كلها داخل تطبيق واحد بهوية راقية وأداء سريع.",
-    aboutP2:
-      "نتميّز بتفاصيل تجعل الفرق واضحًا: مزامنة جهات الاتصال بأسماء دفتر هاتفك، رسائل صوتية ووسائط سلسة، قفل للمحادثات، تحقق بخطوتين، وحذف كامل للحساب. Lan Chat يمنحك تحكمًا أقوى وخصوصية أعلى وتجربة استخدام أجمل يومًا بعد يوم.",
+    navFeatures: "المميزات",
+    navPrivacy: "الخصوصية",
+    navDownload: "التحميل",
+    brand: "LanChat",
+    headline: "تواصل بثقة — محادثات ومكالمات وغرف مباشرة",
+    lead: "LanChat تطبيق تواصل متكامل بهوية ذهبية: رسائل، مجموعات، مكالمات، حالات، وغرف لايف — مع خصوصية حقيقية وويب مرتبط بأمان.",
+    ctaPrimary: "حمّل التطبيق",
+    ctaWeb: "افتح الويب",
+    marquee: [
+      "رسائل ووسائط",
+      "مجموعات",
+      "مكالمات صوت وصورة",
+      "حالات",
+      "غرف مباشرة",
+      "قفل المحادثة",
+      "تحقق بخطوتين",
+      "ويب مرتبط",
+      "استطلاعات",
+      "تفاعلات",
+      "ترجمة",
+    ],
+    promiseLabel: "المنتج",
+    promiseTitle: "كل ما تحتاجه للتواصل — في مكان واحد",
+    promiseText:
+      "بدل التشتت بين تطبيقات متعددة، يجمع LanChat المراسلة والمكالمات والحالات والغرف المباشرة في تجربة واحدة سريعة وأنيقة — مصمّمة للاستخدام اليومي بثقة.",
     featuresLabel: "المميزات",
-    featuresTitle: "أقوى مما تتوقع من تطبيق محادثات",
-    features: [
+    featuresTitle: "قدرات التطبيق كاملة",
+    featuresLead: "حرّك القرص الذهبي — كل نقطة تفتح عالم ميزة مختلفة.",
+    featuresHint: "اضغط على النقاط أو استخدم الأسهم",
+    featuresPrev: "السابق",
+    featuresNext: "التالي",
+    chapters: [
       {
-        title: "محادثات أذكى وأكمل",
-        desc: "نصوص، صور، فيديو، مستندات، رسائل صوتية، موقع، وجهات اتصال — بدون تعقيد وبسرعة عالية.",
+        id: "messaging",
+        index: "01",
+        short: "رسائل",
+        title: "مراسلة ذكية ومتكاملة",
+        desc: "محادثات فردية سلسة مع وسائط غنية وتفاصيل تهمك يوميًا.",
+        points: [
+          "نصوص، صور، فيديو، مستندات، ورسائل صوتية",
+          "مشاركة الموقع وجهات الاتصال",
+          "تثبيت الرسائل المهمة وأرشفة المحادثات",
+        ],
       },
       {
-        title: "مكالمات أوضح",
-        desc: "صوت وصورة بجودة عالية وإشعارات فورية، لتبقى متصلًا كأنك في نفس المكان.",
+        id: "groups",
+        index: "02",
+        short: "مجموعات",
+        title: "مجموعات منظمة",
+        desc: "أنشئ دوائرك وادعُ الآخرين بروابط آمنة مع إدارة واضحة.",
+        points: [
+          "مجموعات للمحادثة الجماعية",
+          "دعوات انضمام سهلة",
+          "أدوات إدارة للأدمن",
+        ],
       },
       {
-        title: "حالات بلمسة فاخرة",
-        desc: "شارك لحظاتك بخلفية مخصصة وتجربة بصرية أنيقة تعكس هويتك.",
+        id: "calls",
+        index: "03",
+        short: "مكالمات",
+        title: "مكالمات صوت وصورة",
+        desc: "ابقَ قريبًا بجودة عالية وإشعارات فورية — من الجوال أو الويب.",
+        points: [
+          "مكالمات صوتية ومرئية",
+          "سجل مكالمات واضح",
+          "تجربة مستقرة عبر Agora",
+        ],
       },
       {
-        title: "بث مباشر مدمج",
-        desc: "غرف لايف جاهزة للدعوات والتفاعل اللحظي — ميزة تتجاوز تطبيقات الدردشة العادية.",
+        id: "status",
+        index: "04",
+        short: "حالات",
+        title: "حالات تعبّر عنك",
+        desc: "شارك اللحظات وتابع من تهتم بهم بتجربة بصرية أنيقة.",
+        points: [
+          "حالات صور ونصوص",
+          "خلفية وتجربة عرض مميزة",
+          "ظهور يومي بسيط وسريع",
+        ],
       },
       {
-        title: "خصوصية بمستوى أعلى",
-        desc: "تحقق بخطوتين، قفل المحادثات، حظر متقدم، وحذف دائم للحساب والبيانات.",
+        id: "rooms",
+        index: "05",
+        short: "غرف",
+        title: "غرف مباشرة",
+        desc: "انضم إلى غرف صوتية حية وتفاعل في لحظتها مع الآخرين.",
+        points: [
+          "غرف لايف مدمجة داخل التطبيق",
+          "دعوات وروابط انضمام",
+          "تواصل لحظي يتجاوز الدردشة النصية",
+        ],
       },
       {
-        title: "ويب مرتبط بأمان",
-        desc: "اربط جهازك عبر QR واستخدم Lan Chat Web بجانب هاتفك دون التنازل عن الأمان.",
+        id: "privacy",
+        index: "06",
+        short: "خصوصية",
+        title: "خصوصية تحت سيطرتك",
+        desc: "أدوات حماية حقيقية — لا شعارات فارغة.",
+        points: [
+          "تحقق بخطوتين",
+          "قفل المحادثات الحساسة",
+          "حظر متقدم وحذف دائم للحساب",
+        ],
+      },
+      {
+        id: "web",
+        index: "07",
+        short: "ويب",
+        title: "LanChat Web كجهاز مرتبط",
+        desc: "افتح الويب، امسح رمز QR من هاتفك، وتابع محادثاتك على الشاشة الكبيرة.",
+        points: [
+          "ربط آمن عبر QR",
+          "نفس حسابك على المتصفح",
+          "مناسب للعمل والمكتب",
+        ],
       },
     ],
+    extrasLabel: "والمزيد",
+    extrasTitle: "تفاصيل تصنع فرق الاستخدام اليومي",
+    extras: [
+      "استطلاعات داخل المحادثة",
+      "تفاعلات على الرسائل",
+      "ترجمة تساعد على التواصل",
+      "مزامنة جهات الاتصال بأسماء دفتر الهاتف",
+      "رفع وسائط سلس وسحابة آمنة",
+    ],
+    webLabel: "الويب",
+    webTitle: "تجربة سطح مكتب بدون أن تفقد هاتفك",
+    webText:
+      "LanChat Web جهاز مرتبط: ابدأ من web.lanchat.net وامسح الرمز من التطبيق — جلسة محمية ومتزامنة.",
+    webCta: "انتقل إلى الويب",
     privacyLabel: "الأمان",
-    privacyTitle: "أمان يليق بتطبيق أفضل",
+    privacyTitle: "الخصوصية أساس المنتج لا إضافة لاحقة",
     privacyText:
-      "خصوصيتك ليست خيارًا إضافيًا — هي أساس المنتج. لا نبيع بياناتك، ونمنحك أدوات حقيقية للتحكم: إعدادات الخصوصية، الحظر، والحق الكامل في حذف حسابك وكل ما يرتبط به.",
+      "لا نبيع بياناتك. نمنحك أدوات واضحة للتحكم: إعدادات الخصوصية، الحظر، والحق الكامل في حذف حسابك وما يرتبط به.",
     privacyItems: [
-      "تسجيل آمن برقم الهاتف مع تحقق بخطوتين لحماية أقوى",
-      "مزامنة جهات الاتصال لعرض أسماء دفتر الهاتف بدقة داخل التطبيق",
-      "حذف دائم للحساب والبيانات المرتبطة به بضغطة واحدة",
+      "تسجيل برقم الهاتف مع تحقق بخطوتين",
+      "قفل المحادثات وحماية الجلسات المرتبطة",
+      "حذف دائم للحساب والبيانات بضغطة واحدة",
     ],
-    ctaTitle: "جرّب التواصل بشكل أفضل مع Lan Chat",
-    ctaText: "نجهّز إصدارات App Store و Google Play. اضغط على الأيقونة وكن من أوائل من يحصل على التجربة الكاملة.",
+    downloadTitle: "ابدأ مع LanChat اليوم",
+    downloadText: "حمّل التطبيق للجوال، أو افتح عميل الويب واربط جهازك خلال ثوانٍ.",
     getOn: "حمّل من",
     appStore: "App Store",
     googlePlay: "Google Play",
-    modalTitle: "قريبًا جدًا",
-    modalBody: "هذا المتجر لا يزال تحت التطوير. سنعلن عن رابط التحميل الرسمي فور توفره.",
-    modalOk: "حسنًا",
+    footerTagline: "تواصل بثقة — رسائل ومكالمات وغرف مباشرة.",
+    footerExplore: "استكشف",
+    footerContact: "تواصل",
     footerCopy: "جميع الحقوق محفوظة © Lan SMS Trading",
     support: "Support@lanchat.net",
   },
   en: {
     langSwitch: "العربية",
-    headline: "A better way to stay connected",
-    lead: "Lan Chat isn’t just another messenger — it’s a premium all-in-one platform that unites speed, elegance, and security in a refined gold-accented experience that outshines ordinary chat apps.",
-    aboutLabel: "About us",
-    aboutTitle: "Why Lan Chat is better",
-    aboutP1:
-      "Lan Chat was built from the ground up for a smarter, smoother experience. Instead of juggling multiple apps, you get instant messaging, voice and video calls, status updates, and live rooms — all in one polished product with a premium look and fast performance.",
-    aboutP2:
-      "The difference is in the details: phonebook-name contact sync, fluid voice notes and media, chat lock, two-step verification, and full account deletion. Lan Chat gives you stronger control, higher privacy, and a more beautiful everyday experience.",
+    navFeatures: "Features",
+    navPrivacy: "Privacy",
+    navDownload: "Download",
+    brand: "LanChat",
+    headline: "Connect with confidence — chat, calls, and live rooms",
+    lead: "LanChat is an all-in-one communicator with a gold identity: messaging, groups, calls, status, and live rooms — plus real privacy controls and a secure linked web client.",
+    ctaPrimary: "Download the app",
+    ctaWeb: "Open web",
+    marquee: [
+      "Rich messaging",
+      "Groups",
+      "Voice & video calls",
+      "Status",
+      "Live rooms",
+      "Chat lock",
+      "Two-step verification",
+      "Linked web",
+      "Polls",
+      "Reactions",
+      "Translation",
+    ],
+    promiseLabel: "Product",
+    promiseTitle: "Everything you need to stay connected — in one place",
+    promiseText:
+      "Instead of juggling apps, LanChat brings messaging, calls, status, and live rooms into one fast, refined experience — built for everyday confidence.",
     featuresLabel: "Features",
-    featuresTitle: "More powerful than a typical chat app",
-    features: [
+    featuresTitle: "The full product surface",
+    featuresLead: "Spin the gold dial — each node opens a different capability.",
+    featuresHint: "Tap the nodes or use the arrows",
+    featuresPrev: "Previous",
+    featuresNext: "Next",
+    chapters: [
       {
-        title: "Smarter messaging",
-        desc: "Text, photos, video, documents, voice notes, location, and contacts — fast, complete, and effortless.",
+        id: "messaging",
+        index: "01",
+        short: "Chat",
+        title: "Complete smart messaging",
+        desc: "Smooth one-to-one chats with rich media and the details that matter daily.",
+        points: [
+          "Text, photos, video, documents, and voice notes",
+          "Share location and contacts",
+          "Pin important messages and archive chats",
+        ],
       },
       {
-        title: "Clearer calls",
-        desc: "High-quality voice and video with instant notifications, so you stay close wherever you are.",
+        id: "groups",
+        index: "02",
+        short: "Groups",
+        title: "Organized groups",
+        desc: "Create your circles, invite with secure links, and manage clearly.",
+        points: [
+          "Group conversations that stay organized",
+          "Easy join invites",
+          "Admin tools when you need them",
+        ],
       },
       {
-        title: "Premium status",
-        desc: "Share your moments with custom backgrounds and a refined visual experience.",
+        id: "calls",
+        index: "03",
+        short: "Calls",
+        title: "Voice & video calls",
+        desc: "Stay close with high-quality calls and instant alerts — on mobile or web.",
+        points: [
+          "Voice and video calling",
+          "Clear call history",
+          "Stable experience powered by Agora",
+        ],
       },
       {
-        title: "Built-in live rooms",
-        desc: "Go live, invite friends, and interact in real time — beyond what ordinary messengers offer.",
+        id: "status",
+        index: "04",
+        short: "Status",
+        title: "Status that feels premium",
+        desc: "Share moments and follow people you care about with a polished viewer.",
+        points: [
+          "Photo and text status",
+          "Distinct viewing experience",
+          "Fast daily sharing",
+        ],
       },
       {
-        title: "Higher-level privacy",
-        desc: "Two-step verification, chat lock, advanced blocking, and permanent account deletion.",
+        id: "rooms",
+        index: "05",
+        short: "Rooms",
+        title: "Live rooms",
+        desc: "Join live audio rooms and interact in the moment.",
+        points: [
+          "Live rooms built into the app",
+          "Invites and join links",
+          "Real-time presence beyond text chat",
+        ],
       },
       {
-        title: "Secure linked web",
-        desc: "Scan a QR code and use Lan Chat Web beside your phone without compromising security.",
+        id: "privacy",
+        index: "06",
+        short: "Privacy",
+        title: "Privacy under your control",
+        desc: "Real protection tools — not empty slogans.",
+        points: [
+          "Two-step verification",
+          "Lock sensitive chats",
+          "Advanced blocking and permanent account deletion",
+        ],
+      },
+      {
+        id: "web",
+        index: "07",
+        short: "Web",
+        title: "LanChat Web as a linked device",
+        desc: "Open the web client, scan a QR code from your phone, and continue on the big screen.",
+        points: [
+          "Secure QR pairing",
+          "Same account in the browser",
+          "Built for desk and productivity",
+        ],
       },
     ],
+    extrasLabel: "And more",
+    extrasTitle: "Details that improve every day",
+    extras: [
+      "In-chat polls",
+      "Message reactions",
+      "Translation that helps you connect",
+      "Contact sync with real phonebook names",
+      "Smooth media uploads to a secure cloud",
+    ],
+    webLabel: "Web",
+    webTitle: "Desktop reach without leaving your phone behind",
+    webText:
+      "LanChat Web is a linked device: start at web.lanchat.net and scan from the app — a protected, synced session.",
+    webCta: "Go to web",
     privacyLabel: "Security",
-    privacyTitle: "Security worthy of a better app",
+    privacyTitle: "Privacy is the foundation — not an afterthought",
     privacyText:
-      "Privacy isn’t an add-on — it’s the foundation. We don’t sell your data, and we give you real control: privacy settings, blocking, and the full right to delete your account and everything linked to it.",
+      "We don’t sell your data. You get clear control: privacy settings, blocking, and the full right to delete your account and everything linked to it.",
     privacyItems: [
-      "Secure phone sign-in with two-step verification for stronger protection",
-      "Contact sync that shows real phonebook names inside the app",
-      "One-tap permanent deletion of your account and related data",
+      "Phone sign-in with two-step verification",
+      "Chat lock and protected linked sessions",
+      "One-tap permanent account and data deletion",
     ],
-    ctaTitle: "Experience a better Lan Chat",
-    ctaText: "App Store and Google Play builds are on the way. Tap a store badge and be among the first to get the full experience.",
+    downloadTitle: "Start with LanChat today",
+    downloadText: "Download the mobile app, or open the web client and link your device in seconds.",
     getOn: "Get it on",
     appStore: "App Store",
     googlePlay: "Google Play",
-    modalTitle: "Coming soon",
-    modalBody: "This store listing is still under development. We’ll publish the official download link as soon as it’s ready.",
-    modalOk: "Got it",
+    footerTagline: "Connect with confidence — chat, calls, and live rooms.",
+    footerExplore: "Explore",
+    footerContact: "Contact",
     footerCopy: "All rights reserved © Lan SMS Trading",
     support: "Support@lanchat.net",
   },
-} as const;
+};

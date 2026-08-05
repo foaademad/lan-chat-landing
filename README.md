@@ -1,6 +1,8 @@
-# Lan Chat Landing
+# LanChat Landing
 
-صفحة تعريفية لتطبيق **Lan Chat** بهوية التطبيق (فحمي + ذهبي `#C9960F`).
+الصفحة الرسمية لتعريف تطبيق **LanChat** بهوية الفحمي + الذهبي `#C9960F`.
+
+عربي / إنجليزي · شرح المميزات · روابط App Store و Google Play و LanChat Web.
 
 ## تشغيل محلي
 
@@ -19,6 +21,6 @@ npm run build
 
 ## ملاحظات
 
-- أزرار App Store / Google Play تفتح مودال «تحت التطوير».
+- روابط المتاجر والويب في `src/content.ts` → `STORE_URLS`.
 - الحقوق في الفوتر: **Lan SMS Trading**.
-- الشعار من هوية التطبيق: `public/brand/logo.png`.
+- الأصول: `public/brand/wordmark.png` و `public/brand/logo.png`.

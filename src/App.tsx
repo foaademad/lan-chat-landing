@@ -1,92 +1,46 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import "./App.css";
-import { ComingSoonModal } from "./components/ComingSoonModal";
+import { FeatureOrbit } from "./components/FeatureOrbit";
 import { StoreButtons } from "./components/StoreButtons";
-import { copy, type Lang } from "./content";
-
-const featureIcons = [
-  // chat
-  <svg key="chat" width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <path
-      d="M5 6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v7A2.5 2.5 0 0 1 16.5 16H10l-3.8 2.9A.8.8 0 0 1 5 18.3V6.5Z"
-      stroke="currentColor"
-      strokeWidth="1.8"
-    />
-  </svg>,
-  // call
-  <svg key="call" width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <path
-      d="M7.2 4.8c.5-.5 1.3-.5 1.8 0l1.5 1.5c.5.5.5 1.3 0 1.8l-1 1a11.2 11.2 0 0 0 5.4 5.4l1-1c.5-.5 1.3-.5 1.8 0l1.5 1.5c.5.5.5 1.3 0 1.8l-.7.7c-.7.7-1.7 1-2.7.8A15.8 15.8 0 0 1 5.7 8.2c-.2-1 .1-2 .8-2.7l.7-.7Z"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinejoin="round"
-    />
-  </svg>,
-  // status
-  <svg key="status" width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <circle cx="12" cy="12" r="7.25" stroke="currentColor" strokeWidth="1.8" strokeDasharray="4 3.2" />
-    <circle cx="12" cy="12" r="3" fill="currentColor" />
-  </svg>,
-  // live
-  <svg key="live" width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <rect x="3.5" y="6" width="13" height="12" rx="2.2" stroke="currentColor" strokeWidth="1.8" />
-    <path d="M16.5 10.2 20 8v8l-3.5-2.2" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-  </svg>,
-  // privacy
-  <svg key="privacy" width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <path
-      d="M12 3.5 19 6.5v5.2c0 4.2-2.8 7.4-7 8.8-4.2-1.4-7-4.6-7-8.8V6.5L12 3.5Z"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinejoin="round"
-    />
-  </svg>,
-  // devices
-  <svg key="devices" width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <rect x="3.5" y="5" width="12" height="9.5" rx="1.6" stroke="currentColor" strokeWidth="1.8" />
-    <rect x="16" y="9" width="4.5" height="8" rx="1.2" stroke="currentColor" strokeWidth="1.8" />
-    <path d="M7 17.5h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-  </svg>,
-];
+import { copy, STORE_URLS, type Lang } from "./content";
+import { useReveal } from "./hooks/useReveal";
 
 function App() {
   const [lang, setLang] = useState<Lang>("ar");
-  const [modalOpen, setModalOpen] = useState(false);
   const t = copy[lang];
+  useReveal([lang]);
 
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
     document.body.dataset.lang = lang;
+    document.title =
+      lang === "ar"
+        ? "LanChat — تواصل بثقة"
+        : "LanChat — Connect with confidence";
   }, [lang]);
-
-  useEffect(() => {
-    if (!modalOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setModalOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [modalOpen]);
 
   return (
     <div className="page">
       <div className="ambient" aria-hidden>
         <div className="ambient__wash" />
-        <div className="ambient__glow ambient__glow--tl" />
-        <div className="ambient__glow ambient__glow--br" />
-        <div className="ambient__pattern" />
+        <div className="ambient__beam" />
+        <div className="ambient__glow ambient__glow--a" />
+        <div className="ambient__glow ambient__glow--b" />
+        <div className="ambient__grid" />
+        <div className="ambient__crest" />
       </div>
 
       <div className="content">
         <header className="shell topbar">
-          <a className="brand-lockup" href="#top" aria-label="LanChat">
-            <img
-              className="brand-wordmark"
-              src="/brand/wordmark.png"
-              alt="LanChat"
-            />
+          <a className="brand-lockup" href="#top" aria-label={t.brand}>
+            <img className="brand-wordmark" src="/brand/wordmark.png" alt={t.brand} />
           </a>
+          <nav className="topnav" aria-label="Primary">
+            <a href="#features">{t.navFeatures}</a>
+            <a href="#privacy">{t.navPrivacy}</a>
+            <a href="#download">{t.navDownload}</a>
+          </nav>
           <button
             type="button"
             className="lang-toggle"
@@ -97,104 +51,268 @@ function App() {
         </header>
 
         <main id="top">
-          <section className="shell hero">
-            <h1 className="hero__brand">
-              <img
-                className="hero__wordmark"
-                src="/brand/wordmark.png"
-                alt="LanChat"
-              />
-            </h1>
-            <p className="hero__headline">{t.headline}</p>
-            <p className="hero__lead">{t.lead}</p>
-            <StoreButtons
-              getOn={t.getOn}
-              appStore={t.appStore}
-              googlePlay={t.googlePlay}
-              onStoreClick={() => setModalOpen(true)}
-            />
-          </section>
+          {/* Hero: one composition — brand, headline, lead, CTAs, visual */}
+          <section className="hero" aria-labelledby="hero-brand">
+            <div className="shell hero__grid">
+              <div className="hero__copy">
+                <h1 id="hero-brand" className="hero__brand">
+                  <img
+                    className="hero__wordmark"
+                    src="/brand/wordmark.png"
+                    alt={t.brand}
+                  />
+                </h1>
+                <p className="hero__headline">{t.headline}</p>
+                <p className="hero__lead">{t.lead}</p>
+                <div className="hero__actions">
+                  <a className="btn btn--primary" href="#download">
+                    {t.ctaPrimary}
+                  </a>
+                  <a
+                    className="btn btn--ghost"
+                    href={STORE_URLS.web}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t.ctaWeb}
+                  </a>
+                </div>
+              </div>
 
-          <section className="shell section" aria-labelledby="about-title">
-            <p className="section__label">{t.aboutLabel}</p>
-            <h2 className="section__title" id="about-title">
-              {t.aboutTitle}
-            </h2>
-            <div className="about-panel">
-              <p>{t.aboutP1}</p>
-              <p>{t.aboutP2}</p>
+              <div className="hero__stage" aria-hidden>
+                <div className="device">
+                  <div className="device__bezel">
+                    <div className="device__notch" />
+                    <div className="device__screen">
+                      <img src="/brand/logo.png" alt="" className="device__crest" />
+                      <span className="device__script">{t.brand}</span>
+                      <div className="device__pulse" />
+                    </div>
+                  </div>
+                </div>
+                <div className="hero__orbit" />
+              </div>
             </div>
           </section>
 
-          <section className="shell section" aria-labelledby="features-title">
-            <p className="section__label">{t.featuresLabel}</p>
-            <h2 className="section__title" id="features-title">
-              {t.featuresTitle}
-            </h2>
-            <div className="feature-grid">
-              {t.features.map((feature, index) => (
-                <article className="feature" key={feature.title}>
-                  <div className="feature__icon">{featureIcons[index]}</div>
-                  <h3 className="feature__title">{feature.title}</h3>
-                  <p className="feature__desc">{feature.desc}</p>
-                </article>
+          <div className="marquee" aria-hidden>
+            <div className="marquee__track">
+              {[...t.marquee, ...t.marquee].map((item, i) => (
+                <span key={`${item}-${i}`} className="marquee__item">
+                  {item}
+                  <span className="marquee__dot" />
+                </span>
               ))}
             </div>
-          </section>
+          </div>
 
-          <section className="shell section" aria-labelledby="privacy-title">
-            <div className="privacy-band">
-              <p className="section__label">{t.privacyLabel}</p>
-              <h2 className="section__title" id="privacy-title">
-                {t.privacyTitle}
+          <section className="shell section promise" data-reveal aria-labelledby="promise-title">
+            <div className="promise__frame">
+              <p className="section__label">{t.promiseLabel}</p>
+              <h2 className="section__title" id="promise-title">
+                {t.promiseTitle}
               </h2>
-              <p className="section__text">{t.privacyText}</p>
-              <ul className="privacy-list">
-                {t.privacyItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+              <p className="section__lead">{t.promiseText}</p>
             </div>
           </section>
 
-          <section className="shell section">
-            <div className="cta">
-              <h2>{t.ctaTitle}</h2>
-              <p>{t.ctaText}</p>
-              <StoreButtons
-                getOn={t.getOn}
-                appStore={t.appStore}
-                googlePlay={t.googlePlay}
-                onStoreClick={() => setModalOpen(true)}
+          <section
+            id="features"
+            className="shell section features"
+            aria-labelledby="features-title"
+          >
+            <header className="section__head" data-reveal>
+              <p className="section__label">{t.featuresLabel}</p>
+              <h2 className="section__title" id="features-title">
+                {t.featuresTitle}
+              </h2>
+              <p className="section__lead">{t.featuresLead}</p>
+            </header>
+
+            <div data-reveal>
+              <FeatureOrbit
+                key={lang}
+                chapters={t.chapters}
+                hint={t.featuresHint}
+                prevLabel={t.featuresPrev}
+                nextLabel={t.featuresNext}
               />
+            </div>
+          </section>
+
+          <section className="shell section extras" data-reveal aria-labelledby="extras-title">
+            <div className="extras__intro">
+              <p className="section__label">{t.extrasLabel}</p>
+              <h2 className="section__title" id="extras-title">
+                {t.extrasTitle}
+              </h2>
+            </div>
+            <ul className="extras__constellation">
+              {t.extras.map((item, i) => (
+                <li key={item} style={{ "--i": i } as CSSProperties}>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="section web-band" data-reveal aria-labelledby="web-title">
+            <div className="shell web-band__frame">
+              <div className="web-band__copy">
+                <p className="section__label">{t.webLabel}</p>
+                <h2 className="section__title" id="web-title">
+                  {t.webTitle}
+                </h2>
+                <p className="section__lead">{t.webText}</p>
+                <a
+                  className="btn btn--primary"
+                  href={STORE_URLS.web}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t.webCta}
+                </a>
+              </div>
+
+              <div className="web-band__stage" aria-hidden>
+                <div className="browser">
+                  <div className="browser__chrome">
+                    <span />
+                    <span />
+                    <span />
+                    <div className="browser__url">web.lanchat.net</div>
+                  </div>
+                  <div className="browser__body">
+                    <img src="/brand/wordmark.png" alt="" className="browser__mark" />
+                    <div className="browser__qr">
+                      <div className="browser__qr-grid" />
+                      <span>QR</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="web-band__float">
+                  <strong>01</strong>
+                  <span>Scan</span>
+                </div>
+                <div className="web-band__float web-band__float--b">
+                  <strong>02</strong>
+                  <span>Link</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="privacy"
+            className="section privacy"
+            data-reveal
+            aria-labelledby="privacy-title"
+          >
+            <div className="shell privacy__frame">
+              <div className="privacy__manifesto">
+                <p className="section__label">{t.privacyLabel}</p>
+                <h2 className="section__title" id="privacy-title">
+                  {t.privacyTitle}
+                </h2>
+                <p className="section__lead">{t.privacyText}</p>
+              </div>
+              <ol className="privacy__pillars">
+                {t.privacyItems.map((item, i) => (
+                  <li key={item}>
+                    <span className="privacy__num" aria-hidden>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p>{item}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
+
+          <section
+            id="download"
+            className="section download"
+            data-reveal
+            aria-labelledby="download-title"
+          >
+            <div className="shell download__frame">
+              <img src="/brand/logo.png" alt="" className="download__crest" aria-hidden />
+              <h2 className="section__title" id="download-title">
+                {t.downloadTitle}
+              </h2>
+              <p className="section__lead">{t.downloadText}</p>
+              <div className="download__actions">
+                <StoreButtons
+                  getOn={t.getOn}
+                  appStore={t.appStore}
+                  googlePlay={t.googlePlay}
+                />
+              </div>
             </div>
           </section>
         </main>
 
-        <footer className="shell footer">
-          <p className="footer__brand">
-            <img
-              className="footer__wordmark"
-              src="/brand/wordmark.png"
-              alt="LanChat"
-            />
-          </p>
-          <p className="footer__copy">{t.footerCopy}</p>
-          <p className="footer__copy">
-            <a href={`mailto:${t.support}`} style={{ color: "inherit" }}>
-              {t.support}
-            </a>
-          </p>
+        <footer className="footer">
+          <div className="footer__glow" aria-hidden />
+          <div className="shell footer__inner">
+            <div className="footer__brand">
+              <a href="#top" className="footer__brand-link" aria-label={t.brand}>
+                <img src="/brand/logo.png" alt="" className="footer__crest" />
+                <img
+                  className="footer__wordmark"
+                  src="/brand/wordmark.png"
+                  alt={t.brand}
+                />
+              </a>
+              <p className="footer__tagline">{t.footerTagline}</p>
+            </div>
+
+            <div className="footer__col">
+              <p className="footer__heading">{t.footerExplore}</p>
+              <nav className="footer__nav" aria-label={t.footerExplore}>
+                <a href="#features">{t.navFeatures}</a>
+                <a href="#privacy">{t.navPrivacy}</a>
+                <a href="#download">{t.navDownload}</a>
+                <a
+                  href={STORE_URLS.web}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t.ctaWeb}
+                </a>
+              </nav>
+            </div>
+
+            <div className="footer__col footer__col--contact">
+              <p className="footer__heading">{t.footerContact}</p>
+              <a className="footer__mail" href={`mailto:${t.support}`}>
+                {t.support}
+              </a>
+              <a
+                className="footer__web"
+                href={STORE_URLS.web}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                web.lanchat.net
+              </a>
+            </div>
+          </div>
+
+          <div className="footer__bar">
+            <div className="shell footer__bar-inner">
+              <p className="footer__copy">{t.footerCopy}</p>
+              <button
+                type="button"
+                className="footer__lang"
+                onClick={() => setLang((prev) => (prev === "ar" ? "en" : "ar"))}
+              >
+                {t.langSwitch}
+              </button>
+            </div>
+          </div>
         </footer>
       </div>
-
-      <ComingSoonModal
-        open={modalOpen}
-        title={t.modalTitle}
-        body={t.modalBody}
-        okLabel={t.modalOk}
-        onClose={() => setModalOpen(false)}
-      />
     </div>
   );
 }

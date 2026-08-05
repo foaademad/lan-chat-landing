@@ -1,8 +1,9 @@
+import { STORE_URLS } from "../content";
+
 type StoreButtonsProps = {
   getOn: string;
   appStore: string;
   googlePlay: string;
-  onStoreClick: (store: "ios" | "android") => void;
 };
 
 function AppleIcon() {
@@ -24,32 +25,33 @@ function PlayIcon() {
   );
 }
 
-export function StoreButtons({
-  getOn,
-  appStore,
-  googlePlay,
-  onStoreClick,
-}: StoreButtonsProps) {
+export function StoreButtons({ getOn, appStore, googlePlay }: StoreButtonsProps) {
   return (
     <div className="store-row">
-      <button
-        type="button"
+      <a
         className="store-btn store-btn--gold"
-        onClick={() => onStoreClick("ios")}
+        href={STORE_URLS.ios}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <AppleIcon />
         <span className="store-btn__meta">
           <span className="store-btn__eyebrow">{getOn}</span>
           <span className="store-btn__name">{appStore}</span>
         </span>
-      </button>
-      <button type="button" className="store-btn" onClick={() => onStoreClick("android")}>
+      </a>
+      <a
+        className="store-btn"
+        href={STORE_URLS.android}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <PlayIcon />
         <span className="store-btn__meta">
           <span className="store-btn__eyebrow">{getOn}</span>
           <span className="store-btn__name">{googlePlay}</span>
         </span>
-      </button>
+      </a>
     </div>
   );
 }
