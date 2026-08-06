@@ -9,8 +9,7 @@ lerna-debug.log*
 
 node_modules
 
-# Build output — always produced by `npm run build` (local or Coolify/Nixpacks)
-dist
+
 
 *.local
 
