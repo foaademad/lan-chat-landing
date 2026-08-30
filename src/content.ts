@@ -128,7 +128,7 @@ export const copy: Record<Lang, Copy> = {
         points: [
           "مكالمات صوتية ومرئية",
           "سجل مكالمات واضح",
-          "تجربة مستقرة عبر Agora",
+          "تجربة مستقرة عبر LiveKit",
         ],
       },
       {
@@ -281,7 +281,7 @@ export const copy: Record<Lang, Copy> = {
         points: [
           "Voice and video calling",
           "Clear call history",
-          "Stable experience powered by Agora",
+          "Stable experience powered by LiveKit",
         ],
       },
       {
