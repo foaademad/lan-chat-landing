@@ -58,7 +58,7 @@ export function FeatureOrbit({
         <div className="orbit-dial__ring" aria-hidden />
         <div className="orbit-dial__ring orbit-dial__ring--inner" aria-hidden />
         <div className="orbit-dial__core" aria-hidden>
-          <img src="/brand/logo.png" alt="" />
+          <img src="/brand/logo.webp" alt="" />
           <span className="orbit-dial__index">{chapter.index}</span>
         </div>
 

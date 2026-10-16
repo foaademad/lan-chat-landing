@@ -29,5 +29,5 @@ img { display: block; max-width: 100%; }
 button, input { font: inherit; }
 ::selection { background: #dfba6340; color: white; }
 :focus-visible { outline: 2px solid var(--brand); outline-offset: 6px; }
-:target { scroll-margin-top: 100px; }
+:target { scroll-margin-top: 0; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
