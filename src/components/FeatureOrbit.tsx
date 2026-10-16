@@ -1,9 +1,9 @@
 import {
   useCallback,
-  useEffect,
   useId,
   useState,
   type CSSProperties,
+  type KeyboardEvent,
 } from "react";
 import type { FeatureChapter } from "../content";
 
@@ -34,26 +34,27 @@ export function FeatureOrbit({
     [total],
   );
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-        e.preventDefault();
-        go(active - 1);
-      }
-      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-        e.preventDefault();
-        go(active + 1);
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [active, go]);
+  const handleKeys = (e: KeyboardEvent<HTMLDivElement>) => {
+    const rtl = document.documentElement.dir === "rtl";
+    let next = active;
+    if (e.key === "ArrowLeft") next += rtl ? 1 : -1;
+    else if (e.key === "ArrowRight") next += rtl ? -1 : 1;
+    else if (e.key === "ArrowUp") next--;
+    else if (e.key === "ArrowDown") next++;
+    else if (e.key === "Home") next = 0;
+    else if (e.key === "End") next = total - 1;
+    else return;
+    e.preventDefault();
+    next = (next + total) % total;
+    go(next);
+    document.getElementById(`${uid}-tab-${chapters[next].id}`)?.focus();
+  };
 
   if (!chapter) return null;
 
   return (
     <div className="orbit-theater" data-active={chapter.id}>
-      <div className="orbit-dial" role="tablist" aria-label={hint}>
+      <div className="orbit-dial" role="tablist" aria-label={hint} onKeyDown={handleKeys}>
         <div className="orbit-dial__ring" aria-hidden />
         <div className="orbit-dial__ring orbit-dial__ring--inner" aria-hidden />
         <div className="orbit-dial__core" aria-hidden>
@@ -71,6 +72,7 @@ export function FeatureOrbit({
               role="tab"
               id={`${uid}-tab-${item.id}`}
               aria-selected={selected}
+              tabIndex={selected ? 0 : -1}
               aria-controls={`${uid}-panel`}
               className={`orbit-node ${selected ? "is-active" : ""}`}
               style={{ "--a": `${angle}deg` } as CSSProperties}
@@ -86,6 +88,7 @@ export function FeatureOrbit({
       <div
         className="orbit-stage"
         role="tabpanel"
+        tabIndex={0}
         id={`${uid}-panel`}
         aria-labelledby={`${uid}-tab-${chapter.id}`}
         key={chapter.id}

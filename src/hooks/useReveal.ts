@@ -1,24 +1,21 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-/** Adds `.is-in` when elements with `[data-reveal]` enter the viewport. */
+/** Content stays visible when observer support or motion is unavailable. */
 export function useReveal(deps: unknown[] = []) {
   useEffect(() => {
-    const nodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
-    if (!nodes.length) return;
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-in");
-            io.unobserve(entry.target);
-          }
+    const root = document.documentElement;
+    const nodes = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    root.classList.add('reveal-ready');
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          observer.unobserve(entry.target);
         }
-      },
-      { threshold: 0.16, rootMargin: "0px 0px -8% 0px" },
-    );
-
-    for (const node of nodes) io.observe(node);
-    return () => io.disconnect();
+      }
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    for (const node of nodes) observer.observe(node);
+    return () => { observer.disconnect(); root.classList.remove('reveal-ready'); };
   }, deps);
 }

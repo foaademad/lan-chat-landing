@@ -128,7 +128,7 @@ export const copy: Record<Lang, Copy> = {
         points: [
           "مكالمات صوتية ومرئية",
           "سجل مكالمات واضح",
-          "تجربة مستقرة عبر LiveKit",
+          "انتقل من الكتابة إلى الحوار وجهًا لوجه",
         ],
       },
       {
@@ -187,7 +187,7 @@ export const copy: Record<Lang, Copy> = {
       "تفاعلات على الرسائل",
       "ترجمة تساعد على التواصل",
       "مزامنة جهات الاتصال بأسماء دفتر الهاتف",
-      "رفع وسائط سلس وسحابة آمنة",
+      "مشاركة الصور والفيديو والمستندات",
     ],
     webLabel: "الويب",
     webTitle: "تجربة سطح مكتب بدون أن تفقد هاتفك",
@@ -281,7 +281,7 @@ export const copy: Record<Lang, Copy> = {
         points: [
           "Voice and video calling",
           "Clear call history",
-          "Stable experience powered by LiveKit",
+          "Move from typing to a face-to-face conversation",
         ],
       },
       {
@@ -340,7 +340,7 @@ export const copy: Record<Lang, Copy> = {
       "Message reactions",
       "Translation that helps you connect",
       "Contact sync with real phonebook names",
-      "Smooth media uploads to a secure cloud",
+      "Share photos, videos, and documents",
     ],
     webLabel: "Web",
     webTitle: "Desktop reach without leaving your phone behind",
