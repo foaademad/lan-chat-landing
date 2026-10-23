@@ -26,7 +26,7 @@ function App() {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.body.dataset.lang = lang;
-    const title = lang === 'ar' ? 'لان شات — لنكن أقرب | LanChat' : 'LanChat — Let’s be closer';
+    const title = lang === 'ar' ? 'لان شات — تواصل يجمعنا | LanChat' : 'LanChat — Connection that gathers us';
     document.title = title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', c.lead);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', title);
