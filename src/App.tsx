@@ -139,7 +139,7 @@ function App() {
 
       <section className="shell section steps-section" aria-labelledby="steps-title">
         <div className="section-head section-head--center" data-reveal><p className="eyebrow">05 / {c.stepsLabel}</p><h2 id="steps-title">{c.stepsTitle}</h2><p className="section-lead">{c.stepsLead}</p></div>
-        <ol className="steps">{c.steps.map((step, i) => <li key={step.title} data-reveal style={{ '--delay': `${i * 100}ms` } as CSSProperties}><span className="step-number">0{i + 1}</span><h3>{step.title}</h3><p>{step.text}</p></li>)}</ol>
+        <ol className="steps">{c.steps.map((step, i) => <li key={step.title} data-reveal style={{ '--delay': `${i * 100}ms` } as CSSProperties}><span className="step-number">{i + 1}</span><h3>{step.title}</h3><p>{step.text}</p></li>)}</ol>
       </section>
 
       <section className="shell web-section" aria-labelledby="web-title">
