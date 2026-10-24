@@ -97,7 +97,7 @@ export const copy: Record<Lang, Copy> = {
     chapters: [
       {
         id: "messaging",
-        index: "01",
+        index: "1",
         short: "رسائل",
         title: "مراسلة ذكية ومتكاملة",
         desc: "محادثات فردية سلسة مع وسائط غنية وتفاصيل تهمك يوميًا.",
@@ -109,7 +109,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         id: "groups",
-        index: "02",
+        index: "2",
         short: "مجموعات",
         title: "مجموعات منظمة",
         desc: "أنشئ دوائرك وادعُ الآخرين بروابط آمنة مع إدارة واضحة.",
@@ -121,7 +121,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         id: "calls",
-        index: "03",
+        index: "3",
         short: "مكالمات",
         title: "مكالمات صوت وصورة",
         desc: "ابقَ قريبًا بجودة عالية وإشعارات فورية، من الهاتف أو الويب.",
@@ -133,7 +133,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         id: "status",
-        index: "04",
+        index: "4",
         short: "حالات",
         title: "حالات تعبّر عنك",
         desc: "شارك اللحظات وتابع من تهتم بهم بتجربة بصرية أنيقة.",
@@ -145,7 +145,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         id: "rooms",
-        index: "05",
+        index: "5",
         short: "غرف",
         title: "غرف مباشرة",
         desc: "انضم إلى غرف صوتية حية وتفاعل في لحظتها مع الآخرين.",
@@ -157,7 +157,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         id: "privacy",
-        index: "06",
+        index: "6",
         short: "خصوصية",
         title: "خصوصية تحت سيطرتك",
         desc: "أدوات حماية حقيقية، لا عبارات إنشائية.",
@@ -169,7 +169,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         id: "web",
-        index: "07",
+        index: "7",
         short: "ويب",
         title: "LanChat Web كجهاز مرتبط",
         desc: "افتح الويب، امسح رمز QR من هاتفك، وتابع محادثاتك على الشاشة الكبيرة.",
@@ -250,7 +250,7 @@ export const copy: Record<Lang, Copy> = {
     chapters: [
       {
         id: "messaging",
-        index: "01",
+        index: "1",
         short: "Chat",
         title: "Complete smart messaging",
         desc: "Smooth one-to-one chats with rich media and the details that matter daily.",
@@ -262,7 +262,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         id: "groups",
-        index: "02",
+        index: "2",
         short: "Groups",
         title: "Organized groups",
         desc: "Create your circles, invite with secure links, and manage clearly.",
@@ -274,7 +274,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         id: "calls",
-        index: "03",
+        index: "3",
         short: "Calls",
         title: "Voice & video calls",
         desc: "Stay close with high-quality calls and instant alerts — on mobile or web.",
@@ -286,7 +286,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         id: "status",
-        index: "04",
+        index: "4",
         short: "Status",
         title: "Status that feels premium",
         desc: "Share moments and follow people you care about with a polished viewer.",
@@ -298,7 +298,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         id: "rooms",
-        index: "05",
+        index: "5",
         short: "Rooms",
         title: "Live rooms",
         desc: "Join live audio rooms and interact in the moment.",
@@ -310,7 +310,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         id: "privacy",
-        index: "06",
+        index: "6",
         short: "Privacy",
         title: "Privacy under your control",
         desc: "Real protection tools — not empty slogans.",
@@ -322,7 +322,7 @@ export const copy: Record<Lang, Copy> = {
       },
       {
         id: "web",
-        index: "07",
+        index: "7",
         short: "Web",
         title: "LanChat Web as a linked device",
         desc: "Open the web client, scan a QR code from your phone, and continue on the big screen.",

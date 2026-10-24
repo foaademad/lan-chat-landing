@@ -108,7 +108,7 @@ function App() {
       <div className="principles-strip"><div className="shell">{c.principles.map((item, i) => <span key={item}><Icon name={['chat', 'people', 'shield', 'globe'][i]} />{item}<i>✦</i></span>)}</div></div>
 
       <section id="features" className="shell section features" aria-labelledby="features-title">
-        <div className="section-head" data-reveal><div><p className="eyebrow">01 / {c.featuresLabel}</p><h2 id="features-title">{c.featuresTitle}</h2></div><p className="section-lead">{c.featuresLead}</p></div>
+        <div className="section-head" data-reveal><div><p className="eyebrow">1 / {c.featuresLabel}</p><h2 id="features-title">{c.featuresTitle}</h2></div><p className="section-lead">{c.featuresLead}</p></div>
         <div data-reveal><FeatureOrbit key={lang} chapters={t.chapters} hint={t.featuresHint} prevLabel={t.featuresPrev} nextLabel={t.featuresNext} /></div>
         <div className="feature-extras" data-reveal>{t.extras.map(item => <span key={item}><Icon name="check" />{item}</span>)}</div>
       </section>
@@ -116,19 +116,19 @@ function App() {
       <section id="about" className="about-section" aria-labelledby="about-title">
         <div className="shell about-grid">
           <div className="about-art" data-reveal aria-hidden="true"><div className="connection-ring connection-ring--outer" /><div className="connection-ring connection-ring--inner" /><div className="about-art__logo"><img src="/brand/logo.webp" alt="" /></div><div className="connection-node node-one"><Icon name="heart" /></div><div className="connection-node node-two"><Icon name="chat" /></div><div className="connection-node node-three"><Icon name="mic" /></div><span className="about-art__word">closer.</span><span className="about-art__caption">THE SPACE BETWEEN US, REIMAGINED.</span></div>
-          <div className="about-copy" data-reveal><p className="eyebrow">02 / {c.aboutLabel}</p><h2 id="about-title">{c.aboutTitle}</h2><p>{c.aboutText}</p><p>{c.aboutSecond}</p><div className="about-note"><span>✦</span>{c.aboutNote}</div></div>
+          <div className="about-copy" data-reveal><p className="eyebrow">2 / {c.aboutLabel}</p><h2 id="about-title">{c.aboutTitle}</h2><p>{c.aboutText}</p><p>{c.aboutSecond}</p><div className="about-note"><span>✦</span>{c.aboutNote}</div></div>
         </div>
       </section>
 
       <section id="vision" className="shell section vision-section" aria-labelledby="vision-title">
-        <div className="section-head" data-reveal><div><p className="eyebrow">03 / {c.visionLabel}</p><h2 id="vision-title">{c.visionTitle}</h2></div><p className="section-lead">{c.visionLead}</p></div>
-        <div className="purpose-grid">{c.purpose.map((item, i) => <article className={`purpose-card ${i === 0 ? 'purpose-card--gold' : ''}`} key={item.label} data-reveal style={{ '--delay': `${i * 90}ms` } as CSSProperties}><div className="purpose-card__top"><span>{item.label}</span><Icon name={item.icon} /></div><span className="purpose-card__index" aria-hidden="true">0{i + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
-        <div className="values" data-reveal><p className="eyebrow">{c.valuesLabel}</p><div className="values__grid">{c.values.map((value, i) => <div key={value.title}><span className="value-number">0{i + 1}</span><h3>{value.title}</h3><p>{value.text}</p></div>)}</div></div>
+        <div className="section-head" data-reveal><div><p className="eyebrow">3 / {c.visionLabel}</p><h2 id="vision-title">{c.visionTitle}</h2></div><p className="section-lead">{c.visionLead}</p></div>
+        <div className="purpose-grid">{c.purpose.map((item, i) => <article className={`purpose-card ${i === 0 ? 'purpose-card--gold' : ''}`} key={item.label} data-reveal style={{ '--delay': `${i * 90}ms` } as CSSProperties}><div className="purpose-card__top"><span>{item.label}</span><Icon name={item.icon} /></div><span className="purpose-card__index" aria-hidden="true">{i + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+        <div className="values" data-reveal><p className="eyebrow">{c.valuesLabel}</p><div className="values__grid">{c.values.map((value, i) => <div key={value.title}><span className="value-number">{i + 1}</span><h3>{value.title}</h3><p>{value.text}</p></div>)}</div></div>
       </section>
 
       <section id="everyday" className="everyday-section" aria-labelledby="everyday-title">
         <div className="shell section">
-          <div className="section-head" data-reveal><div><p className="eyebrow">04 / {c.lifeLabel}</p><h2 id="everyday-title">{c.lifeTitle}</h2></div><p className="section-lead">{c.lifeLead}</p></div>
+          <div className="section-head" data-reveal><div><p className="eyebrow">4 / {c.lifeLabel}</p><h2 id="everyday-title">{c.lifeTitle}</h2></div><p className="section-lead">{c.lifeLead}</p></div>
           <div className="audience-tabs" role="tablist" aria-label={c.lifeLabel} onKeyDown={audienceKeys}>{c.audiences.map((item, i) => <button type="button" role="tab" key={item.tab} id={`${audienceId}-tab-${i}`} aria-selected={audience === i} aria-controls={`${audienceId}-panel`} tabIndex={audience === i ? 0 : -1} onClick={() => setAudience(i)}><Icon name={item.icon} />{item.tab}</button>)}</div>
           <div className="audience-panel" role="tabpanel" id={`${audienceId}-panel`} aria-labelledby={`${audienceId}-tab-${audience}`} tabIndex={0}>
             <div className="audience-copy" key={`copy-${audience}-${lang}`}><h3>{selected.title}</h3><p>{selected.text}</p><ul>{selected.points.map(point => <li key={point}><Icon name="check" />{point}</li>)}</ul><a className="text-link" href="#download">{t.ctaPrimary}<Icon name="arrow" className="direction-arrow" /></a></div>
@@ -138,7 +138,7 @@ function App() {
       </section>
 
       <section className="shell section steps-section" aria-labelledby="steps-title">
-        <div className="section-head section-head--center" data-reveal><p className="eyebrow">05 / {c.stepsLabel}</p><h2 id="steps-title">{c.stepsTitle}</h2><p className="section-lead">{c.stepsLead}</p></div>
+        <div className="section-head section-head--center" data-reveal><p className="eyebrow">5 / {c.stepsLabel}</p><h2 id="steps-title">{c.stepsTitle}</h2><p className="section-lead">{c.stepsLead}</p></div>
         <ol className="steps">{c.steps.map((step, i) => <li key={step.title} data-reveal style={{ '--delay': `${i * 100}ms` } as CSSProperties}><span className="step-number">{i + 1}</span><h3>{step.title}</h3><p>{step.text}</p></li>)}</ol>
       </section>
 
@@ -148,13 +148,13 @@ function App() {
       </section>
 
       <section id="privacy" className="shell section privacy-section" aria-labelledby="privacy-title">
-        <div className="section-head" data-reveal><div><p className="eyebrow">06 / {c.privacyLabel}</p><h2 id="privacy-title">{c.privacyTitle}</h2></div><p className="section-lead">{c.privacyLead}</p></div>
+        <div className="section-head" data-reveal><div><p className="eyebrow">6 / {c.privacyLabel}</p><h2 id="privacy-title">{c.privacyTitle}</h2></div><p className="section-lead">{c.privacyLead}</p></div>
         <div className="privacy-grid">{c.privacy.map((item, i) => <article key={item.title} data-reveal style={{ '--delay': `${i * 90}ms` } as CSSProperties}><span className="privacy-icon"><Icon name={item.icon} /></span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
       </section>
 
       <section id="faq" className="shell section faq-section" aria-labelledby="faq-title">
-        <div className="faq-intro" data-reveal><p className="eyebrow">07 / {c.faqLabel}</p><h2 id="faq-title">{c.faqTitle}</h2><p className="section-lead">{c.faqLead}</p><a className="text-link" href={`mailto:${t.support}`}>{c.contactCta}<Icon name="arrow" className="direction-arrow" /></a></div>
-        <div className="faq-list" data-reveal>{c.faq.map((item, i) => <details key={item.question}><summary><span className="faq-index">0{i + 1}</span><span>{item.question}</span><Icon name="plus" /></summary><div className="faq-answer"><p>{item.answer}</p></div></details>)}</div>
+        <div className="faq-intro" data-reveal><p className="eyebrow">7 / {c.faqLabel}</p><h2 id="faq-title">{c.faqTitle}</h2><p className="section-lead">{c.faqLead}</p><a className="text-link" href={`mailto:${t.support}`}>{c.contactCta}<Icon name="arrow" className="direction-arrow" /></a></div>
+        <div className="faq-list" data-reveal>{c.faq.map((item, i) => <details key={item.question}><summary><span className="faq-index">{i + 1}</span><span>{item.question}</span><Icon name="plus" /></summary><div className="faq-answer"><p>{item.answer}</p></div></details>)}</div>
       </section>
 
       <section className="shell contact-section" data-reveal aria-labelledby="contact-title"><span className="contact-icon" aria-hidden="true"><Icon name="mail" /></span><div><p className="eyebrow">{c.contactLabel}</p><h2 id="contact-title">{c.contactTitle}</h2><p>{c.contactText}</p></div><a className="btn btn--ghost" href={`mailto:${t.support}`}>{c.contactCta}<Icon name="arrow" className="direction-arrow" /></a></section>
